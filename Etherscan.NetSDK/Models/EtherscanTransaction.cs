@@ -1,4 +1,4 @@
-﻿using DotNetToolkit;
+using DotNetToolkit;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -40,6 +40,21 @@ namespace Etherscan.NetSDK.Models
             }
         }
 
+        public Decimal GasPrice { get; set; }
+
+        public Decimal GasUsed { get; set; }
+       
+        /// <summary>
+        /// Fee in ETH amount
+        /// </summary>
+        public Decimal Fee
+        {
+            get
+            {
+                return GasPrice * GasUsed / 1000000000000000000;
+            }
+        }
+
         /// <summary>
         /// 0 - No error
         /// </summary>
@@ -48,6 +63,6 @@ namespace Etherscan.NetSDK.Models
         /// <summary>
         /// 1 = Success
         /// </summary>
-        public int TxreceiptStatus { get; set; }
+        public int? TxreceiptStatus { get; set; }
     }
 }
