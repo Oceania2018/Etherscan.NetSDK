@@ -40,6 +40,21 @@ namespace Etherscan.NetSDK.Models
             }
         }
 
+        public Decimal GasPrice { get; set; }
+
+        public Decimal GasUsed { get; set; }
+       
+        /// <summary>
+        /// Fee in ETH amount
+        /// </summary>
+        public Decimal Fee
+        {
+            get
+            {
+                return GasPrice * GasUsed / 1000000000000000000;
+            }
+        }
+
         /// <summary>
         /// 0 - No error
         /// </summary>
